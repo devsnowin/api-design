@@ -2,18 +2,16 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-	res.json({
-		status: 'ok',
-		data: 'Hello !',
-	});
-});
-
 /**
  * Product
  */
 
-router.get('/product', () => {});
+router.get('/product', (req, res) => {
+	res.json({
+		status: 'ok',
+		data: req.secret,
+	});
+});
 router.get('/product/:id', () => {});
 
 router.put('/product/:id', () => {});
@@ -44,3 +42,5 @@ router.put('/updatepoint/:id', () => {});
 router.post('/updatepoint', () => {});
 
 router.delete('/updatepoint/:id', () => {});
+
+export default router;
