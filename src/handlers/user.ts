@@ -3,6 +3,15 @@ import prisma from '../prisma';
 import { comparePassword, createJWT, hashPassword } from '../utils/auth';
 
 export const createNewUser = async (req: Request, res: Response) => {
+	if (!req.body.password && !req.body.user) {
+		res.status(404);
+		res.json({
+			message: 'Nope',
+		});
+
+		return;
+	}
+
 	const user = await prisma.user.create({
 		data: {
 			username: req.body.username,
