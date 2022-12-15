@@ -1,7 +1,9 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
+import { createNewUser, signIn } from './handlers/user';
 
 import router from './router';
+import { protect } from './utils/auth';
 
 const app = express();
 
@@ -10,11 +12,9 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-	req.secret = 'monkey';
-	next();
-});
+app.use('/api', protect, router);
 
-app.use('/api', router);
+app.post('/user', createNewUser);
+app.post('/signin', signIn);
 
 export default app;

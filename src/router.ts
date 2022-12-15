@@ -9,7 +9,7 @@ const router = Router();
 router.get('/product', (req, res) => {
 	res.json({
 		status: 'ok',
-		data: req.secret,
+		message: 'product',
 	});
 });
 router.get('/product/:id', () => {});

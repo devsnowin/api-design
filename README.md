@@ -13,3 +13,7 @@ Prsima is a DB agnostic, type safe ORM.
 # Migrations
 
 - is to teach the database about the shape of the data or if you already have a schema and wants to have change to it, you can do migrations.
+
+# JWT
+
+WTs or JSON Web Tokens are most commonly used to identify an authenticated user. They are issued by an authentication server and are consumed by the client-server (to secure its APIs).
