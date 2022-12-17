@@ -6,6 +6,7 @@ dotenv.config();
 import router from './router';
 import { protect } from './utils/auth';
 import { createNewUser, signIn } from './handlers/user';
+import { errorHandler } from './utils/errorHandler';
 
 const app = express();
 
@@ -19,5 +20,8 @@ app.use('/api', protect, router);
 
 app.post('/user', createNewUser);
 app.post('/signin', signIn);
+
+/** Error handler **/
+app.use(errorHandler);
 
 export default app;
